@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500&display=swap');
+
+.home_hero{
+    width: 100%;
+    min-height: 100vh;
+}
+.home_hero_row{
+    min-height: 100vh;
+    display: flex;
+}
+.welcome_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+}
+.welcome_gif{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.welcome_div h1{
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: #2d2e32;
+    line-height:1.2;
+}
+.welcome_div p{
+    line-height: 1.6;
+    font-weight: 500;
+    font-family: Mulish,sans-serif;
+    font-size: 1.1rem;
+    color: #555;
+}
+.width_control{
+    max-width: 400px;
+}
+.hero-image{
+    background-image: url("../../../../../public/template/joyal/images/projects/large/s.jpg");
+    height: 24rem;
+    width: 23rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid #2d2e32;
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    position: relative;
+    animation: morph 8s ease-in-out infinite;
+    -webkit-animation: morph 8s ease-in-out infinite;
+    background-position: 50%;
+    transition: all 1s ease-in-out;
+}
+
+.hero-image-user{
+    height: 24rem;
+    width: 23rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* border: 3px solid #2d2e32; */
+    /* border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; */
+    /* position: relative; */
+    /* animation: morph 8s ease-in-out infinite; */
+    /* -webkit-animation: morph 8s ease-in-out infinite; */
+    background-position: 50%;
+    /* transition: all 1s ease-in-out; */
+}
+
+
+@-webkit-keyframes morph {
+    0% {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40%/50% 60% 30% 60%
+    }
+
+    to {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%
+    }
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40%/50% 60% 30% 60%
+    }
+
+    to {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%
+    }
+}
+
+.home_hero span a{
+    font-size: 2rem;
+    color: #2d2e32;
+    margin-right: 15px;
+}
+
+@media (max-width: 768px) {
+    .hero-image{
+        width: 16rem !important;
+        height: 16rem  !important;
+    }
+    .home_hero h1, p,span{
+        text-align: center;
+    }
+    .width_control div{
+        justify-content: center;
+        display: flex;
+    }
+    .home_hero{
+        padding-top: 120px;
+    }
+    /* .change-orientation{
+        flex-direction: column-reverse;
+        display: flex;
+    } */
+    
+    
+}
+
+
+@media (max-width: 932px) {
+    .hero-image{
+        background-image: url("../../../../../public/template/joyal/images/projects/small/s.jpg");
+        width: 19rem;
+        height: 19rem;
+    }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+

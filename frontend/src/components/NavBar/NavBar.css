@@ -1,0 +1,10 @@
+@media (max-width: 960px) {
+    .mobile-nav-display{
+        display: none;
+    }
+}
+
+@media (min-width: 961px) {
+    .mobile-nav-display{
+    }
+}
