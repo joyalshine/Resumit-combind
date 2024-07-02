@@ -41,6 +41,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use((req, res, next) => {
   res.setHeader("Content-Security-Policy", "script-src 'self' https://accounts.google.com");
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
   next();
 });
 
