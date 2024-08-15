@@ -56,7 +56,7 @@ function App() {
               element={<ValidateParsedData reqType={"validate"} />}
             />
           </Route>
-          <Route path="/url/:portfolioId" element={<PortfolioDisplay />} />
+          <Route path="/:portfolioId" element={<PortfolioDisplay />} />
           <Route element={<PageNotFound />} />
         </Routes>
       )}
