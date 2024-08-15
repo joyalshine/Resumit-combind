@@ -18,7 +18,7 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   const { authUser } = useAuthContext();
-
+  console.log("Reached app.js")
   return (
     <div className="min-h-screen">
       {authUser == undefined || authUser == null || authUser == "" ? (
