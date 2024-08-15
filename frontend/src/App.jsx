@@ -32,6 +32,7 @@ function App() {
           <Route path="/portfolio">
             <Route path="create" element={<Navigate to="/auth/login" />} />
           </Route>
+          <Route path="/:portfolioId" element={<PortfolioDisplay />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       ) : (

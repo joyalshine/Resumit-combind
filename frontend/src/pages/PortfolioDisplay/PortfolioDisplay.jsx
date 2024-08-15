@@ -24,7 +24,6 @@ function PortfolioDisplay() {
     }
 
     useEffect(() => {
-        console.log("Reached the page-------------------------")
         async function fetchData() {
             const response = await fetchPortfolio({ portfolioId });
             const { data, status } = response
