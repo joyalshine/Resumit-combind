@@ -39,7 +39,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div
+    <div id="topnav"
       class="pt-4 mb-1 border-b-default border-solid border-gray-200 z-30 w-full bg-white ">
       <div class="mx-auto max-w-7xl  lg:px-8">
         <div class="w-full flex flex-col lg:flex-row">

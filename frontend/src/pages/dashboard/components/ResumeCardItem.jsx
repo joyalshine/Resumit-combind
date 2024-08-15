@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function ResumeCardItem({ resume }) {
   return (
-    <Link to={"/dashboard/resume/1000/edit"}>
+    <Link to={`/resume/${resume._id}/edit`}>
       <div className="p-14 bg-secondary flex justify-center items-center h-[280px] border-primary rounded-lg hover:scale-105 transition-all hover:shadow-md shadow-primary cursor-pointer ">
         <NotebookIcon />
       </div>

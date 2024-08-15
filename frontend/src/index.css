@@ -10,6 +10,14 @@
   #print-area {
     display: block;
   }
+  #resumepage {
+    box-shadow: none;
+  }
+  #print-area-parent {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
 
   body {
     margin: 0;
@@ -102,4 +110,8 @@ ol {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+input[type="month"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Example to invert the color */
 }

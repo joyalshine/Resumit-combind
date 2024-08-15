@@ -35,19 +35,22 @@ function ViewResume() {
       <Navbar />
 
       <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
-        <div id="topnav" className="my-10 mx-10 lg:mx-36 md:mx-20">
+        <div id="topnav" className="my-10 mx-10  md:mx-20 lg:mx-36">
           <h2 className="text-center text-2xl font-medium">
             Congrats ! Your Resume has been compelety made{" "}
           </h2>
           <p className="text-center text-gray-500">
             Now you can download your resume{" "}
           </p>
-          <div className="flex justify-between mx-48 my-10">
+          <div className="flex justify-between lg:mx-48 my-10">
             <Button onClick={handleDownLoad}>Download</Button>
             <Button>Share</Button>
           </div>
         </div>
-        <div id="" ref={targetRef} className="my-10 mx-10 lg:mx-36 md:mx-20">
+        <div
+          id="print-area-parent"
+          ref={targetRef}
+          className="my-10 mx-10 lg:mx-36 md:mx-20">
           <div id="print-area">
             <ResumePreview />
           </div>

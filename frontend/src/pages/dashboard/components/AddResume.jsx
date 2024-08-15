@@ -40,11 +40,12 @@ function AddResume() {
 
   return (
     <div>
-      <div
+      <button
+        type="button"
         onClick={() => setOpenDialog(true)}
-        className="p-14 py-14 border items-center flex justify-center bg-secondary rounded-lg h-[280px] hover:scale-105 transition-all hover:shadow-md cursor-pointer border-dashed">
-        <PlusSquare />
-      </div>
+        class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">
+        Resume{" "}
+      </button>
 
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent className="sm:max-w-[425px]">

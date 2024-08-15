@@ -15,10 +15,10 @@ function FormSection() {
 
   return (
     <div>
-      <div className="flex justify-between items-center">
-        <Button varient="outline" size="sm" className="flax gap-2">
+      <div className="flex justify-end items-center">
+        {/* <Button varient="outline" size="sm" className="flax gap-2">
           <LayoutGrid /> Theme
-        </Button>
+        </Button> */}
         <div className="flex gap-2" size="sm">
           {activeFormIndex > 1 && (
             <Button
@@ -36,6 +36,7 @@ function FormSection() {
             disabled={!enableNext}
             onClick={() => {
               setActiveFormIndex(activeFormIndex + 1);
+              setEnableNext(false);
             }}>
             Next <ArrowRight />
           </Button>
@@ -67,9 +68,13 @@ function FormSection() {
           }}
         />
       ) : activeFormIndex == 5 ? (
-        <SkillForm />
+        <SkillForm
+          enableNext={(v) => {
+            setEnableNext(v);
+          }}
+        />
       ) : activeFormIndex == 6 ? (
-        <Navigate to={"/dashboard/resume/" + params.resumeId + "/view"} />
+        <Navigate to={"/resume/" + params.resumeId + "/view"} />
       ) : null}
     </div>
   );

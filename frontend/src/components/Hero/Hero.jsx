@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../NavBar/NavBar";
 import { useAuthContext } from "@/context/AuthContext";
 import { Link,useNavigate } from "react-router-dom";
+import AddResume from "@/pages/dashboard/components/AddResume";
 
 const Hero = () => {
   const { authUser } = useAuthContext();
@@ -25,7 +26,7 @@ const Hero = () => {
                 Easily create professional resumes and instantly convert them into stunning portfolios with our AI-powered tools. Simplify your job search and showcase your skills effortlessly.
                 </p>
                 <ul className="flex flex-wrap items-center">
-                  <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Resume </button>
+                  {authUser == null ? <button type="button" onClick={() => navigate('/auth/login')} class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Resume </button> : <AddResume/>}
                   <button type="button" onClick={handlePortfolioBtn} class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Portfolio</button>
 
                 </ul>

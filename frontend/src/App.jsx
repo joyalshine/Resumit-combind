@@ -18,7 +18,8 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   const { authUser } = useAuthContext();
-  console.log("Reached app.js")
+  
+
   return (
     <div className="min-h-screen">
       {authUser == undefined || authUser == null || authUser == "" ? (
@@ -46,8 +47,6 @@ function App() {
               path="edit/:portfolioId"
               element={<ValidateParsedData reqType={"edit"} />}
             />
-            <Route path="resume/:resumeId/edit" element={<EditResume />} />
-            <Route path="resume/:resumeId/view" element={<ViewResume />} />
           </Route>
           <Route path="/portfolio">
             <Route path="create" element={<ResumeUpload />} />
@@ -56,8 +55,12 @@ function App() {
               element={<ValidateParsedData reqType={"validate"} />}
             />
           </Route>
+          <Route path="/resume">
+            <Route path=":resumeId/edit" element={<EditResume />} />
+            <Route path=":resumeId/view" element={<ViewResume />} />
+          </Route>
           <Route path="/:portfolioId" element={<PortfolioDisplay />} />
-          <Route element={<PageNotFound />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       )}
       <Toaster />

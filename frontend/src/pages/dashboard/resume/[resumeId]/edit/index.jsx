@@ -10,7 +10,7 @@ function EditResume() {
   const params = useParams();
   const { fetchResumebyResumeId } = useGetResume();
 
-  // console.log(fetchResumebyResumeId(params.resumeId));
+  console.log(fetchResumebyResumeId(params.resumeId));
 
   const [resumeInfo, setResumeInfo] = useState(async () => {
     const { status, resume } = await fetchResumebyResumeId(params.resumeId);
@@ -26,7 +26,7 @@ function EditResume() {
   const fetchData = async () => {
     const { status, resume } = await fetchResumebyResumeId(params.resumeId);
 
-    // console.log(status, resume);
+    console.log(status, resume);
     setResumeInfo(resume);
   };
 

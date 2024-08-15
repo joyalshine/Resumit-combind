@@ -38,7 +38,7 @@ function Experience({ enableNext }) {
     setLoading(false);
     toast({
       title: "Details Updated",
-      description: "Personal Deatils Updated",
+      description: "Experience Deatils Updated",
     });
     enableNext(true);
   };
@@ -131,7 +131,7 @@ function Experience({ enableNext }) {
               <div>
                 <label className="text-xs">Start Date</label>
                 <Input
-                  type="date"
+                  type="month"
                   name="startDate"
                   value={experience.startDate}
                   onChange={(event) => handleChange(event, index)}
@@ -141,7 +141,7 @@ function Experience({ enableNext }) {
               <div>
                 <label className="text-xs">End Date</label>
                 <Input
-                  type="date"
+                  type="month"
                   name="endDate"
                   value={experience.endDate}
                   onChange={(event) => handleChange(event, index)}
