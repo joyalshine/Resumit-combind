@@ -27,7 +27,7 @@ const useLogin = () => {
           path: "/",
           expires: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000),
         }); // Expires in 7 days
-
+        console.log(response.data);
         return response.data;
       } else {
         console.log("Unexpected response:", response);
