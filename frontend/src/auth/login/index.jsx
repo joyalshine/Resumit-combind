@@ -66,9 +66,13 @@ export function Login() {
     event.preventDefault();
     setLoginLoader(true);
 
-    const response = await login(loginDetails);
-
-    if (response.status == "fail") toast.error(response.message);
+    if (!loginDetails.email || !loginDetails.password) {
+      toast.error("All fields are required");
+    } else {
+      const response = await login(loginDetails);
+      console.log(response);
+      // if (response.status == "fail") toast.error(response.message);
+    }
 
     setLoginLoader(false);
   };
