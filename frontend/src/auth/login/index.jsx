@@ -70,8 +70,8 @@ export function Login() {
       toast.error("All fields are required");
     } else {
       const response = await login(loginDetails);
-      console.log(response);
-      // if (response.status == "fail") toast.error(response.message);
+
+      if (response.status == "fail") toast.error(response.message);
     }
 
     setLoginLoader(false);
