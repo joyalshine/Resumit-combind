@@ -4,8 +4,7 @@ const User = require("./../models/userModel");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/email");
 const crypto = require("crypto");
-const { jwtDecode } = require("jwt-decode")
-
+const { jwtDecode } = require("jwt-decode");
 
 const signToken = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -57,7 +56,7 @@ exports.signup = async (req, res) => {
 
 exports.googleOauth = async (req, res) => {
   try {
-    const { credential_jwt } = req.body
+    const { credential_jwt } = req.body;
     const decoded = jwtDecode(credential_jwt);
 
     const { email } = decoded;
@@ -65,14 +64,13 @@ exports.googleOauth = async (req, res) => {
     if (userExists) {
       if (userExists.oauth) {
         createAndSendToken(userExists, 201, res);
+      } else {
+        return res.status(500).json({
+          status: "fail",
+          message: "This Email already exists try loggin in using password",
+        });
       }
-      else {
-        return res
-          .status(500)
-          .json({ status: "fail", message: "This Email already exists try loggin in using password" });
-      }
-    }
-    else {
+    } else {
       const user = await User.create({
         username: decoded.name,
         email: decoded.email,
@@ -101,11 +99,18 @@ exports.login = async (req, res, next) => {
 
     const user = await User.findOne({ email }).select("+password");
 
-    if (!user || !(await user.correctPassword(password, user.password)))
+    if (!user)
       return res.status(401).json({
         status: "fail",
-        message: "Incorrect email or password",
+        message: "User not Found",
       });
+
+    if (!(await user.correctPassword(password, user.password))) {
+      return res.status(401).json({
+        status: "fail",
+        message: "Password is incorrect",
+      });
+    }
 
     createAndSendToken(user, 200, res);
   } catch (err) {
