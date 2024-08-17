@@ -12,12 +12,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import toast from "react-hot-toast";
 import useSignup from "@/useHooks/useSignup";
 
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from "@react-oauth/google";
 import useGoogleOauth from "@/useHooks/useGoogleOauth";
-
 
 export function SignInPage() {
   const [signinDetails, setSigninDetails] = useState({
@@ -37,10 +36,8 @@ export function SignInPage() {
     confirmPassword: false,
   });
 
-  const { toast } = useToast();
-
   const signup = useSignup();
-  const googleSignIn = useGoogleOauth()
+  const googleSignIn = useGoogleOauth();
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -60,32 +57,40 @@ export function SignInPage() {
   const handleGoogleLoginSuccess = async (response) => {
     try {
       setIsLoading((prevState) => ({ ...prevState, google: true }));
-      await googleSignIn({ credential_jwt: response.credential })
-      console.log("hi 00000000000000000")
-    }
-    catch (e) {
-    }
-    finally {
+      await googleSignIn({ credential_jwt: response.credential });
+      console.log("hi 00000000000000000");
+    } catch (e) {
+    } finally {
       setIsLoading((prevState) => ({ ...prevState, google: false }));
     }
   };
 
   const handleGoogleLoginError = (error) => {
-    console.log(error)
+    console.log(error);
   };
-
-  // toast({
-  //   variant: "destructive",
-  //   title: "Uh oh! Something went wrong.",
-  //   description: "There was a problem with your Google sign-in.",
-  // });
 
   const handleSignin = async (event) => {
     event.preventDefault();
     setIsLoading((prevState) => ({ ...prevState, signin: true }));
 
-    signup(signinDetails);
-    setIsLoading((prevState) => ({ ...prevState, signin: false }));
+    if (
+      !signinDetails.email ||
+      !signinDetails.username ||
+      !signinDetails.password ||
+      !signinDetails.passwordConfirm
+    ) {
+      toast.error("All fields are required");
+      setIsLoading((prevState) => ({ ...prevState, signin: false }));
+    } else if (signinDetails.password.length < 8) {
+      toast.error("Password must be at least 8 characters long");
+      setIsLoading((prevState) => ({ ...prevState, signin: false }));
+    } else if (signinDetails.password != signinDetails.passwordConfirm) {
+      toast.error("Passwords do not match");
+      setIsLoading((prevState) => ({ ...prevState, signin: false }));
+    } else {
+      signup(signinDetails);
+      setIsLoading((prevState) => ({ ...prevState, signin: false }));
+    }
   };
 
   return (
@@ -100,14 +105,16 @@ export function SignInPage() {
         <CardContent className="grid gap-4">
           <div className="flex justify-center">
             {isLoading.google ? (
-              <Button
-                className="w-full mb-3"
-                disabled={true}>
+              <Button className="w-full mb-3" disabled={true}>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 Please Wait
               </Button>
-            ) : <GoogleLogin onSuccess={handleGoogleLoginSuccess} onError={handleGoogleLoginError} />}
-
+            ) : (
+              <GoogleLogin
+                onSuccess={handleGoogleLoginSuccess}
+                onError={handleGoogleLoginError}
+              />
+            )}
           </div>
           <div className="relative">
             <div className="absolute inset-0 flex items-center">

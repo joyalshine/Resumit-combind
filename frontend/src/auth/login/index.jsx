@@ -14,10 +14,9 @@ import { Switch } from "@/components/ui/switch";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import useLogin from "@/useHooks/useLogin";
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from "@react-oauth/google";
 import useGoogleOauth from "@/useHooks/useGoogleOauth";
-
-
+import toast from "react-hot-toast";
 
 export function Login() {
   const [loginDetails, setLoginDetails] = useState({
@@ -35,7 +34,7 @@ export function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   const login = useLogin();
-  const googleSignIn = useGoogleOauth()
+  const googleSignIn = useGoogleOauth();
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -49,20 +48,18 @@ export function Login() {
     setShowPassword((prevState) => !prevState);
   };
 
-  const handleGoogleLoginSuccess = async(response) => {
-    try{
+  const handleGoogleLoginSuccess = async (response) => {
+    try {
       setGoogleLoader(true);
-      await googleSignIn({credential_jwt : response.credential})
-    }
-    catch(e){
-    }
-    finally{
-      setGoogleLoader(false)
+      await googleSignIn({ credential_jwt: response.credential });
+    } catch (e) {
+    } finally {
+      setGoogleLoader(false);
     }
   };
 
   const handleGoogleLoginError = (error) => {
-    console.log(error)
+    console.log(error);
   };
 
   const handleLogin = async (event) => {
@@ -70,6 +67,8 @@ export function Login() {
     setLoginLoader(true);
 
     const response = await login(loginDetails);
+
+    if (response.status == "fail") toast.error(response.message);
 
     setLoginLoader(false);
   };
@@ -86,14 +85,16 @@ export function Login() {
         <CardContent className="grid gap-4">
           <div className="flex justify-center">
             {googleLoader ? (
-              <Button
-                className="w-full mb-3"
-                disabled={googleLoader}>
+              <Button className="w-full mb-3" disabled={googleLoader}>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 Please Wait
               </Button>
-            ) : <GoogleLogin onSuccess={handleGoogleLoginSuccess} onError={handleGoogleLoginError} />}
-
+            ) : (
+              <GoogleLogin
+                onSuccess={handleGoogleLoginSuccess}
+                onError={handleGoogleLoginError}
+              />
+            )}
           </div>
           <div className="relative">
             <div className="absolute inset-0 flex items-center">

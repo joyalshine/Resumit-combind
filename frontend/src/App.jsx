@@ -8,7 +8,7 @@ import Login from "./auth/login";
 import DashBoard from "../src/pages/dashboard";
 import { useAuthContext } from "./context/AuthContext";
 import EditResume from "./pages/dashboard/resume/[resumeId]/edit";
-import { Toaster } from "./components/ui/toaster";
+import { Toaster } from "react-hot-toast";
 import ViewResume from "./pages/dashboard/resume/[resumeId]/view";
 import Navbar from "./components/NavBar/NavBar";
 import ResumeUpload from "./pages/ResumeUpload/ResumeUpload";
@@ -18,7 +18,6 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   const { authUser } = useAuthContext();
-  
 
   return (
     <div className="min-h-screen">
@@ -59,7 +58,8 @@ function App() {
           <Route path="/resume">
             <Route path=":resumeId/edit" element={<EditResume />} />
             <Route path=":resumeId/view" element={<ViewResume />} />
-          </Route>
+                    
+          </Route>
           <Route path="/:portfolioId" element={<PortfolioDisplay />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

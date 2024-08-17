@@ -35,6 +35,8 @@ const useLogin = () => {
     } catch (error) {
       if (error.response) {
         console.error("login failed:", error.response.data);
+
+        return error.response.data;
       } else if (error.request) {
         console.error("No response received:", error.request);
       } else {
