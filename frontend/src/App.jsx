@@ -20,7 +20,7 @@ function App() {
   const { authUser } = useAuthContext();
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-10">
       {authUser == undefined || authUser == null || authUser == "" ? (
         <Routes>
           <Route path="/" element={<Home />} />
