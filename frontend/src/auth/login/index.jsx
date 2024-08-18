@@ -52,15 +52,17 @@ export function Login() {
   const handleGoogleLoginSuccess = async (response) => {
     try {
       setGoogleLoader(true);
-      await googleSignIn({ credential_jwt: response.credential });
+      const responseApi = await googleSignIn({ credential_jwt: response.credential });
+      if(responseApi.status == "fail") toast.error(responseApi.message);
     } catch (e) {
+      toast.error("Some error occured");
     } finally {
       setGoogleLoader(false);
     }
   };
 
   const handleGoogleLoginError = (error) => {
-    console.log(error);
+    toast.error("Some error occured");
   };
 
   const handleLogin = async (event) => {

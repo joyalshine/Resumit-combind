@@ -10,7 +10,7 @@ const useSignup = () => {
 
   const signup = async ({ username, email, password, passwordConfirm }) => {
     try {
-      const response = await axios.post(
+      const {data} = await axios.post(
         AUTH_URL,
         JSON.stringify({ username, email, password, passwordConfirm }),
         {
@@ -18,28 +18,18 @@ const useSignup = () => {
         }
       );
 
-      if (response.status === 201) {
-        console.log("Signup successful:", response.data);
-        setAuthUser(response.data);
+      if (data.status == "success") {
+        setAuthUser(data);
 
-        // Set the auth data in cookies
-        setCookie("authUser", JSON.stringify(response.data), {
+        setCookie("authUser", JSON.stringify(data), {
           path: "/",
           expires: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000),
-        }); // Expires in 7 days
+        }); 
 
-        return response.data;
-      } else {
-        console.log("Unexpected response:", response);
       }
+      return data;
     } catch (error) {
-      if (error.response) {
-        console.error("Signup failed:", error.response.data);
-      } else if (error.request) {
-        console.error("No response received:", error.request);
-      } else {
-        console.error("Error:", error.message);
-      }
+      return {status : "fail",message : "Some error occured"}
     }
   };
 

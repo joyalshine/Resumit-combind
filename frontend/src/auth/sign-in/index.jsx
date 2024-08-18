@@ -32,6 +32,8 @@ export function SignInPage() {
     signin: false,
   });
 
+  const [isLoadingSubmit, setIsLoadingSubmit] = useState(false)
+
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
@@ -58,20 +60,23 @@ export function SignInPage() {
   const handleGoogleLoginSuccess = async (response) => {
     try {
       setIsLoading((prevState) => ({ ...prevState, google: true }));
-      await googleSignIn({ credential_jwt: response.credential });
+      const responseApi = await googleSignIn({ credential_jwt: response.credential });
+      if(responseApi.status == "fail") toast.error(responseApi.message);
     } catch (e) {
+      toast.error("Some error occured");
     } finally {
       setIsLoading((prevState) => ({ ...prevState, google: false }));
     }
   };
 
   const handleGoogleLoginError = (error) => {
-    console.log(error);
+    toast.error("Some error occured");
   };
 
   const handleSignin = async (event) => {
     event.preventDefault();
-    setIsLoading((prevState) => ({ ...prevState, signin: true }));
+    setIsLoadingSubmit(true)
+    console.log(isLoadingSubmit)
 
     if (
       !signinDetails.email ||
@@ -87,10 +92,11 @@ export function SignInPage() {
     } else if (signinDetails.password != signinDetails.passwordConfirm) {
       toast.error("Passwords do not match");
     } else {
-      signup(signinDetails);
+      const response = await signup(signinDetails);
+      if(response.status == "fail") toast.error(response.message);
     }
 
-    setIsLoading((prevState) => ({ ...prevState, signin: false }));
+    setIsLoadingSubmit(false)
   };
 
   return (
@@ -186,9 +192,9 @@ export function SignInPage() {
             <Button
               className="w-full mb-3"
               onClick={handleSignin}
-              isLoading={isLoading.signin}
-              disabled={isLoading.signin}>
-              {isLoading.signin ? (
+              // isLoading={isLoading.signin}
+              disabled={isLoadingSubmit}>
+              {isLoadingSubmit ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   Please Wait

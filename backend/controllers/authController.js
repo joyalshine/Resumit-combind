@@ -39,6 +39,11 @@ const createAndSendToken = (user, statusCode, res) => {
 
 exports.signup = async (req, res) => {
   try {
+    const exists = await User.findOne({email: req.body.email})
+    if(exists){
+      res.json({ status: "fail", message: "User Already Exists" })
+      return
+    }
     const user = await User.create({
       username: req.body.username,
       email: req.body.email,
@@ -48,9 +53,7 @@ exports.signup = async (req, res) => {
 
     createAndSendToken(user, 201, res);
   } catch (err) {
-    return res
-      .status(500)
-      .json({ status: "fail", message: "Failed to create user" });
+    res.send({ status: "fail", message: "Failed to create user" });
   }
 };
 
@@ -65,9 +68,9 @@ exports.googleOauth = async (req, res) => {
       if (userExists.oauth) {
         createAndSendToken(userExists, 201, res);
       } else {
-        return res.status(500).json({
+        return res.json({
           status: "fail",
-          message: "This Email already exists try loggin in using password",
+          message: "This email already exists try loging in using password",
         });
       }
     } else {
@@ -81,9 +84,7 @@ exports.googleOauth = async (req, res) => {
       createAndSendToken(user, 201, res);
     }
   } catch (err) {
-    return res
-      .status(500)
-      .json({ status: "fail", message: "Failed to create user" });
+    return res.json({ status: "fail", message: "Failed to create user" });
   }
 };
 

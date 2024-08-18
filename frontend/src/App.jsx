@@ -58,13 +58,17 @@ function App() {
           <Route path="/resume">
             <Route path=":resumeId/edit" element={<EditResume />} />
             <Route path=":resumeId/view" element={<ViewResume />} />
-                    
+
           </Route>
           <Route path="/:portfolioId" element={<PortfolioDisplay />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       )}
-      <Toaster />
+      <Toaster toastOptions={{
+        style: {
+          fontSize: '14px',
+        },
+      }} />
     </div>
   );
 }
