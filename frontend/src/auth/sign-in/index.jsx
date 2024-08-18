@@ -63,6 +63,8 @@ export function SignInPage() {
       const responseApi = await googleSignIn({ credential_jwt: response.credential });
       if(responseApi.status == "fail") toast.error(responseApi.message);
     } catch (e) {
+      console.log(e.message)
+      console.log(e)
       toast.error("Some error occured");
     } finally {
       setIsLoading((prevState) => ({ ...prevState, google: false }));
