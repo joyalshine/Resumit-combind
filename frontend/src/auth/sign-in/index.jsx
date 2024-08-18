@@ -59,7 +59,6 @@ export function SignInPage() {
     try {
       setIsLoading((prevState) => ({ ...prevState, google: true }));
       await googleSignIn({ credential_jwt: response.credential });
-      console.log("hi 00000000000000000");
     } catch (e) {
     } finally {
       setIsLoading((prevState) => ({ ...prevState, google: false }));
