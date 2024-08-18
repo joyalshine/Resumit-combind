@@ -30,7 +30,7 @@ function AddResume() {
       console.log(status, data);
 
       if (status == "success") {
-        navigate(`${WEBSITE_URL}resume/${data._id}/edit`);
+        navigate(`../resume/${data._id}/edit`, { relative: "path" });
       }
     } catch (err) {
       console.log(err);
