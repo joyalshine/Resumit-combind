@@ -30,6 +30,8 @@ const useGoogleOauth = () => {
       } 
       return response;
     } catch (error) {
+      console.log("level 1")
+      console.log(error)
       return {status : "fail", message : "Some error occured"}
     }
   };
