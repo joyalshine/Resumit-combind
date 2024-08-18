@@ -106,7 +106,6 @@ const importData = async () => {
 
     console.log("Data have been added");
   } catch (err) {
-    console.log(err);
   }
 };
 

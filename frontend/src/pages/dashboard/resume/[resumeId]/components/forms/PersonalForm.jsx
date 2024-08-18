@@ -29,7 +29,6 @@ function PersonalForm({ enableNext }) {
     });
   };
 
-  console.log(resumeInfo);
 
   const onSave = async (e) => {
     setLoading(true);

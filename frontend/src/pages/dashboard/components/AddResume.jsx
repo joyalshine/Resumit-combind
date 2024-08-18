@@ -27,13 +27,10 @@ function AddResume() {
     try {
       const { status, data } = await createResume(resumeTitle);
 
-      console.log(status, data);
-
       if (status == "success") {
         navigate(`../resume/${data._id}/edit`, { relative: "path" });
       }
     } catch (err) {
-      console.log(err);
     }
     // navigate("/dashboard/resume/67289/edit");
     setLoading(false);

@@ -28,9 +28,7 @@ function Education({ enableNext }) {
     e.preventDefault();
     try {
       const updatedResume = await updateResume(params.resumeId, resumeInfo);
-      console.log("updatedResume", updatedResume);
     } catch (err) {
-      console.log(err);
     }
 
     setLoading(false);
@@ -63,7 +61,6 @@ function Education({ enableNext }) {
   };
 
   const handleRichTextEditor = (event, name, index) => {
-    console.log(index, name);
     const newEducationList = [...educationList];
     newEducationList[index][name] = event.target.value;
     setEducationList(newEducationList);

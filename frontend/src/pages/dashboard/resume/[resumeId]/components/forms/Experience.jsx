@@ -30,9 +30,7 @@ function Experience({ enableNext }) {
     e.preventDefault();
     try {
       const updatedResume = await updateResume(params.resumeId, resumeInfo);
-      console.log("updatedResume", updatedResume);
     } catch (err) {
-      console.log(err);
     }
 
     setLoading(false);

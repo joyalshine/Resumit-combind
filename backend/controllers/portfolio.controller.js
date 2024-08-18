@@ -102,7 +102,6 @@ module.exports = {
             }
         }
         catch (e) {
-            console.log(e)
             res.status(404).json({
                 status: false,
             });
@@ -122,11 +121,9 @@ module.exports = {
                 }
             }
             const response = await Portfolio.create(details);
-            console.log(response)
             res.status(201).send({ url: response.url, status: true })
         }
         catch (e) {
-            console.log(e)
             res.status(404).json({
                 status: false,
             });
@@ -145,7 +142,6 @@ module.exports = {
             }
         }
         catch (e) {
-            console.log(e)
             res.status(404).json({
                 status: false,
             });
@@ -155,12 +151,9 @@ module.exports = {
         try {
             const { userId } = req.body
             const response = await Portfolio.find({ userId: userId });
-            // const response = await Portfolio.find({ userId: userId }).select({url : 1});
-            console.log(response)
             res.status(201).send({ data: response, status: true })
         }
         catch (e) {
-            console.log(e)
             res.status(404).json({
                 status: false,
             });
@@ -169,17 +162,12 @@ module.exports = {
     updatePortfolio: async (req, res) => {
         try {
             const details = req.body
-            console.log("BEFORE UPDATING --------------------")
-            console.log(details)
             const {_id} = details
             delete details["_id"]
             const response = await Portfolio.findByIdAndUpdate({ _id: _id },details);
-            console.log(response)
-            // console.log(response)
             res.status(201).send({ url: response.url, status: true })
         }
         catch (e) {
-            console.log(e)
             res.status(404).json({
                 status: false,
             });

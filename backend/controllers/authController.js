@@ -183,9 +183,6 @@ exports.forgotPassword = async (req, res, next) => {
       "host"
     )}/users/resetPassword/${resetToken}`;
 
-    // console.log("------------------");
-    // console.log(resetURL);
-
     const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}\nIf you didn't forget your password, please ignore this email.`;
 
     try {
@@ -253,7 +250,6 @@ exports.resetPassword = async (req, res, next) => {
 };
 
 exports.updatePassword = async (req, res, next) => {
-  console.log(req.user._id);
   try {
     const user = await User.findById(req.user._id).select("+password");
 

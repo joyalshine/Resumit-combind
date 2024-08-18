@@ -18,7 +18,6 @@ const Navbar = () => {
   };
 
   const handleMobileNavBtn = () => {
-    console.log("hello")
     var element = document.getElementById("nav-box");
     element.classList.toggle("mobile-nav-display");
   }

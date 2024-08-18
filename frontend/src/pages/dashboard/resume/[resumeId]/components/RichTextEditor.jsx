@@ -15,7 +15,6 @@ import {
 
 function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
   const [value, setValue] = useState(defaultValue);
-  console.log(value);
 
   return (
     <div>
