@@ -2,5 +2,5 @@ import axios from "axios";
 
 export default axios.create({
   // baseURL: "http://localhost:8000/api",
-  baseURL: "https://resumit-combined.onrender.com",
+  baseURL: "https://resumit-combined.onrender.com/api",
 });
