@@ -45,6 +45,9 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/cronjob', (req, res) => {
+  res.send('Server is Live')
+})
 app.use("/api/users", userRouter);
 app.use("/api/resume", resumeRouter);
 app.use("/api/portfolio", portfolioRouter);
