@@ -19,16 +19,16 @@ const templates = [
         imageSrc: "/images/arnab.png",
         previewLink: "demo2"
     },
-    {
-        value: "template3",
-        imageSrc: "/images/template3.png",
-        previewLink: ""
-    },
-    {
-        value: "template4",
-        imageSrc: "/images/template4.png",
-        previewLink: ""
-    }
+    // {
+    //     value: "template3",
+    //     imageSrc: "/images/template3.png",
+    //     previewLink: ""
+    // },
+    // {
+    //     value: "template4",
+    //     imageSrc: "/images/template4.png",
+    //     previewLink: ""
+    // }
 ]
 
 function ResumeUpload() {

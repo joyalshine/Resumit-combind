@@ -43,7 +43,7 @@ const Navbar = () => {
       <div class="mx-auto max-w-7xl  lg:px-8">
         <div class="w-full flex flex-col lg:flex-row">
           <div class="flex justify-between lg:hidden px-4">
-            <a href="https://pagedone.io/" class="flex items-center">
+            <a href="#" class="flex items-center">
               <svg
                 width="40"
                 height="33"
