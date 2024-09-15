@@ -43,7 +43,7 @@ const Navbar = () => {
       <div class="mx-auto max-w-7xl  lg:px-8">
         <div class="w-full flex flex-col lg:flex-row">
           <div class="flex justify-between lg:hidden px-4">
-            <a href="#" class="flex items-center">
+            <a href="" class="flex items-center">
               <svg
                 width="40"
                 height="33"
@@ -164,7 +164,7 @@ const Navbar = () => {
           <div
             class="hidden w-full lg:flex justify-between max-lg:bg-white max-lg:mt-1 max-lg:px-4 max-lg:shadow-lg max-lg:shadow-gray-200 max-lg:h-auto max-lg:overflow-auto transition-all duration-500 delay-200 "
             id="navbar">
-            <a href="https://pagedone.io/" class="hidden lg:flex items-center">
+            <a href="" class="hidden lg:flex items-center">
               <svg
                 width="40"
                 height="33"
